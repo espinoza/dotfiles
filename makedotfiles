@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Based on https://gitlab.com/gabmus/mydotfiles/-/blob/master/util/makelinks
+
+
+# Install Plug for Neovim
+
+if [ -d "$HOME/.local/share/nvim/site/autoload/" ]; then
+	mkdir -p $HOME/.local/share/nvim/site/autoload/
+fi
+
+if [ -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]; then 
+	echo "Plug for Neovim already installed, skipping"
+else
+	echo "Installing Plug for Neovim"
+	curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+
+# Install dotfiles
+
+DOTFILES="$HOME/git/dotfiles"
+
+[ -f $HOME/.config/nvim/init.vim ] && rm $HOME/.config/nvim/init.vim
+[ ! -d $HOME/.config/nvim/ ] && mkdir -p $HOME/.config/nvim/
+ln -s $DOTFILES/.config/nvim/init.vim $HOME/.config/nvim/init.vim
