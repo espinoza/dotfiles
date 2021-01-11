@@ -14,8 +14,10 @@ Plug 'mattn/emmet-vim'
 call plug#end()
 
 
-set number       " show line numbers
-set scrolloff=8  " number of lines from cursor to nearest limit of visualization
+set number          " show line numbers
+set scrolloff=8     " number of lines from cursor to nearest limit
+set timeoutlen=300  " miliseconds to wait for mapping
+filetype plugin on  " filetype detection and specific plugins
 
 " theme options
 colorscheme gruvbox
@@ -39,4 +41,6 @@ set smartcase   " case sensitive if input contains at least one capital letter
 let g:indentLine_char = '|'
 
 " emmet options
-let g:user_emmet_leader_key=','
+let g:user_emmet_leader_key=','         " redefine trigger key
+let g:user_emmet_install_global=0       " disable for all filetypes...
+autocmd FileType html,css EmmetInstall  " ...and enable just for html/css
