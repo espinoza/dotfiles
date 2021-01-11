@@ -1,10 +1,25 @@
 " Plug
 call plug#begin('~/.local/share/nvim/plugged')
-" List of plugins will be here
+
+" syntax 
+Plug 'sheerun/vim-polyglot'
+
+" theme
+Plug 'morhetz/gruvbox'
+
+" other
+Plug 'yggdroot/indentline'
+Plug 'mattn/emmet-vim'
+    
 call plug#end()
+
 
 set number       " show line numbers
 set scrolloff=8  " number of lines from cursor to nearest limit of visualization
+
+" theme options
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = "hard"
 
 " syntax options
 syntax on
@@ -19,3 +34,9 @@ set hlsearch    " highlight matches
 set incsearch   " incremental searching
 set ignorecase  " searching case insensitive
 set smartcase   " case sensitive if input contains at least one capital letter
+
+" indentline options
+let g:indentLine_char = '|'
+
+" emmet options
+let g:user_emmet_leader_key=','
