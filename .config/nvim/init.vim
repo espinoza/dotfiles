@@ -30,6 +30,7 @@ syntax on
 set tabstop=4     " size of tab
 set shiftwidth=4  " size of indentation
 set expandtab     " insert spaces when tab key is pressed
+autocmd FileType html,css,javascript setlocal shiftwidth=2 softtabstop=2
 
 " searching options
 set hlsearch    " highlight matches
