@@ -10,7 +10,7 @@ Plug 'morhetz/gruvbox'
 " other
 Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
-    
+
 call plug#end()
 
 
@@ -25,12 +25,6 @@ let g:gruvbox_contrast_dark = "hard"
 
 " syntax options
 syntax on
-
-" indent options
-set tabstop=4     " size of tab
-set shiftwidth=4  " size of indentation
-set expandtab     " insert spaces when tab key is pressed
-autocmd FileType html,css,javascript setlocal shiftwidth=2 softtabstop=2
 
 " searching options
 set hlsearch    " highlight matches
