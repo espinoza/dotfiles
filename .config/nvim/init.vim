@@ -3,6 +3,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " syntax 
 Plug 'sheerun/vim-polyglot'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+" completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " themes
 Plug 'morhetz/gruvbox'
@@ -69,3 +74,6 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" coc.nvim config
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
