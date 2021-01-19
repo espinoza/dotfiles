@@ -22,6 +22,7 @@ Plug 'ryanoasis/vim-devicons'
 " other
 Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
+Plug 'AndrewRadev/tagalong.vim'
 
 call plug#end()
 
@@ -77,3 +78,7 @@ nnoremap <A-l> <C-w>l
 
 " coc.nvim config
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+
+" mapping for faster way to save a file
+nmap <C-s> :w<CR>
+imap <C-s> <Esc>:w<CR>
