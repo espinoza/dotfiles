@@ -19,6 +19,10 @@ Plug 'ryanoasis/vim-devicons'
 " this last one requires install font from
 " https://github.com/ryanoasis/nerd-fonts
 
+" status bar
+Plug 'maximbaz/lightline-ale'
+Plug 'itchyny/lightline.vim'
+
 " other
 Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
@@ -77,7 +81,7 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 " coc.nvim config
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-eslint']
 
 " mapping for faster way to save a file
 nmap <C-s> :w<CR>
