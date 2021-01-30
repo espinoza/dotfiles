@@ -8,8 +8,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " themes
-Plug 'morhetz/gruvbox'
-Plug 'dracula/vim'
+"Plug 'morhetz/gruvbox'
+"Plug 'dracula/vim'
+Plug 'cormacrelf/vim-colors-github'
 
 " file explorer
 Plug 'scrooloose/nerdtree'
@@ -39,10 +40,12 @@ filetype plugin on  " filetype detection and specific plugins
 syntax enable
 
 " theme options
-colorscheme dracula
+colorscheme github
+let g:lightline = { 'colorscheme': 'github' }
 highlight Normal ctermbg=233
 set cursorline
 highlight CursorLine ctermbg=235
+call github_colors#togglebg_map('<f5>')
 
 " searching options
 set hlsearch    " highlight matches
