@@ -3,8 +3,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " syntax 
 Plug 'sheerun/vim-polyglot'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 
 " completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -43,6 +41,8 @@ syntax enable
 " theme options
 colorscheme dracula
 highlight Normal ctermbg=233
+set cursorline
+highlight CursorLine ctermbg=235
 
 " searching options
 set hlsearch    " highlight matches
