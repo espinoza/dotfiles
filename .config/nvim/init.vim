@@ -36,6 +36,8 @@ set scrolloff=8     " number of lines from cursor to nearest limit
 set timeoutlen=300  " miliseconds to wait for mapping
 filetype plugin on  " filetype detection and specific plugins
 
+let mapleader=" "
+
 " syntax options
 syntax enable
 
@@ -62,7 +64,7 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+nmap <Leader>nt :NERDTreeFind<CR>
 
 " emmet options
 let g:user_emmet_leader_key=','         " redefine trigger key
@@ -71,21 +73,21 @@ autocmd FileType html,css EmmetInstall  " ...and enable just for html/css
 
 " mapping for terminal mode
 tnoremap <Esc> <C-\><C-n>
-tnoremap <A-[> <Esc>
+tnoremap <C-[> <Esc>
 
 " mapping for split windows
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " coc.nvim config
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-eslint']
 
 " mapping for faster way to save a file
-nmap <C-s> :w<CR>
-imap <C-s> <Esc>:w<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>q :q<CR>
