@@ -26,6 +26,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
 Plug 'AndrewRadev/tagalong.vim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -42,11 +43,13 @@ let mapleader=" "
 syntax enable
 
 " theme options
+set termguicolors
+let g:github_colors_soft = 1
+let g:github_colors_block_diffmark = 0
+set background=light
 colorscheme github
 let g:lightline = { 'colorscheme': 'github' }
-highlight Normal ctermbg=233
 set cursorline
-highlight CursorLine ctermbg=235
 call github_colors#togglebg_map('<f5>')
 
 " searching options
@@ -64,7 +67,7 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nmap <Leader>nt :NERDTreeFind<CR>
+nmap <Leader>nt :NERDTreeToggle<CR>
 
 " emmet options
 let g:user_emmet_leader_key=','         " redefine trigger key
