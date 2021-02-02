@@ -8,9 +8,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " themes
-"Plug 'morhetz/gruvbox'
-"Plug 'dracula/vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'kjssad/quantum.vim'
 Plug 'cormacrelf/vim-colors-github'
+Plug 'rakr/vim-one'
 
 " file explorer
 Plug 'scrooloose/nerdtree'
@@ -19,14 +20,16 @@ Plug 'ryanoasis/vim-devicons'
 " https://github.com/ryanoasis/nerd-fonts
 
 " status bar
-Plug 'maximbaz/lightline-ale'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " other
 Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/MatchTag'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -43,14 +46,13 @@ let mapleader=" "
 syntax enable
 
 " theme options
-set termguicolors
-let g:github_colors_soft = 1
-let g:github_colors_block_diffmark = 0
 set background=light
-colorscheme github
-let g:lightline = { 'colorscheme': 'github' }
+colorscheme PaperColor
+highlight Normal ctermfg=0
+let g:airline_theme='papercolor'
+let g:airline_extensions = ['branch', 'tabline', 'hunks']
 set cursorline
-call github_colors#togglebg_map('<f5>')
+map <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " searching options
 set hlsearch    " highlight matches
