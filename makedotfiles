@@ -21,6 +21,12 @@ fi
 
 DOTFILES="$HOME/git/dotfiles"
 
-[ -f $HOME/.config/nvim/init.vim ] && rm $HOME/.config/nvim/init.vim
 [ ! -d $HOME/.config/nvim/ ] && mkdir -p $HOME/.config/nvim/
+[ -f $HOME/.config/nvim/init.vim ] && rm $HOME/.config/nvim/init.vim
 ln -s $DOTFILES/.config/nvim/init.vim $HOME/.config/nvim/init.vim
+[ -f $HOME/.config/nvim/plugins.vim ] && rm $HOME/.config/nvim/plugins.vim
+ln -s $DOTFILES/.config/nvim/plugins.vim $HOME/.config/nvim/plugins.vim
+[ -f $HOME/.config/nvim/plugins-config.vim ] && rm $HOME/.config/nvim/plugins-config.vim
+ln -s $DOTFILES/.config/nvim/plugins-config.vim $HOME/.config/nvim/plugins-config.vim
+[ -f $HOME/.config/nvim/mapping.vim ] && rm $HOME/.config/nvim/mapping.vim
+ln -s $DOTFILES/.config/nvim/mapping.vim $HOME/.config/nvim/mapping.vim
