@@ -2,16 +2,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " syntax 
 Plug 'sheerun/vim-polyglot'
+Plug 'hail2u/vim-css3-syntax'
 
 " completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " themes
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'cormacrelf/vim-colors-github'
 "Plug 'kjssad/quantum.vim'
-"Plug 'cormacrelf/vim-colors-github'
 "Plug 'rakr/vim-one'
-"Plug 'reedes/vim-colors-pencil'
 
 " file explorer
 Plug 'scrooloose/nerdtree'
@@ -23,13 +23,16 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
 " other
 Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
 Plug 'AndrewRadev/tagalong.vim'
-Plug 'airblade/vim-gitgutter'
 Plug 'gregsexton/MatchTag'
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 

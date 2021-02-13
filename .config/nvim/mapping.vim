@@ -28,3 +28,5 @@ nnoremap <C-p> :bp<CR>
 nnoremap <C-n> :bn<CR>
 nnoremap <Leader>g :e#<CR>
 
+" tab key to select an item on coc.nvim menu
+inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"

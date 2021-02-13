@@ -14,8 +14,8 @@ syntax enable
 
 " theme options
 set background=light
+set termguicolors
 colorscheme PaperColor
-highlight Normal ctermfg=0
 let g:airline_theme='papercolor'
 set cursorline
 map <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>

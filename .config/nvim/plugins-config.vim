@@ -14,7 +14,7 @@ let g:user_emmet_install_global=0       " disable for all filetypes...
 autocmd FileType html,css EmmetInstall  " ...and enable just for html/css
 
 " coc.nvim config
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-eslint']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-eslint', 'coc-snippets']
 
 " air-line options
 set noshowmode
