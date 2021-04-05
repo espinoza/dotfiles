@@ -11,14 +11,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " emmet options
 let g:user_emmet_leader_key=','         " redefine trigger key
 let g:user_emmet_install_global=0       " disable for all filetypes...
-autocmd FileType html,css EmmetInstall  " ...and enable just for html/css
+autocmd FileType html,css,htmldjango EmmetInstall  " ...and enable just for html/css
 
 " coc.nvim config
-let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-eslint']
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-eslint', 'coc-jedi']
 
 " air-line options
 set noshowmode
-let g:airline_extensions = ['branch', 'tabline', 'hunks']
+let g:airline_extensions = ['branch', 'tabline', 'hunks', 'virtualenv', 'tagbar']
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')

@@ -15,7 +15,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " mapping for faster file managment
-nmap <Leader>t :NERDTreeToggle<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 nnoremap <Leader>l :ls<CR>
@@ -30,3 +29,15 @@ nnoremap <Leader>g :e#<CR>
 
 " tab key to select an item on coc.nvim menu
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+
+" NERDTree
+map <Leader>t :call NERDTreeToggleAndRefresh()<CR>
+function NERDTreeToggleAndRefresh()
+	:NERDTreeToggle
+	if g:NERDTree.IsOpen()
+		:NERDTreeRefreshRoot
+	endif
+endfunction
+
+" git-blame
+map <Leader>b :GitBlame<CR>
