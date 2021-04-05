@@ -10,6 +10,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " themes
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'cormacrelf/vim-colors-github'
+Plug 'ashfinal/vim-colors-violet'
+Plug 'kaicataldo/material.vim'
 "Plug 'kjssad/quantum.vim'
 "Plug 'rakr/vim-one'
 
@@ -26,6 +28,7 @@ Plug 'vim-airline/vim-airline-themes'
 " git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'zivyangll/git-blame.vim'
 
 " other
 Plug 'yggdroot/indentline'
@@ -33,6 +36,9 @@ Plug 'mattn/emmet-vim'
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'gregsexton/MatchTag'
 Plug 'tpope/vim-commentary'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+Plug 'preservim/tagbar'
 
 call plug#end()
 

@@ -26,3 +26,6 @@ set incsearch   " incremental searching
 set ignorecase  " searching case insensitive
 set smartcase   " case sensitive if input contains at least one capital letter
 
+if $TERM == "xterm-256color"
+	set t_Co=256
+endif
