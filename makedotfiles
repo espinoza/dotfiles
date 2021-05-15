@@ -32,4 +32,8 @@ ln -s $DOTFILES/.config/nvim/plugin-config.vim $HOME/.config/nvim/plugin-config.
 [ -f $HOME/.config/nvim/mapping.vim ] && rm $HOME/.config/nvim/mapping.vim
 ln -s $DOTFILES/.config/nvim/mapping.vim $HOME/.config/nvim/mapping.vim
 
+echo "Installing bash aliases..."
+[ -f $HOME/.bash_aliases ] && rm $HOME/.bash_aliases
+ln -s $DOTFILES/.bash_aliases $HOME/.bash_aliases
+
 echo "Ready."
