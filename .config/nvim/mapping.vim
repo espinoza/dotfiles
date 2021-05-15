@@ -39,5 +39,5 @@ function NERDTreeToggleAndRefresh()
 	endif
 endfunction
 
-" git-blame
-map <Leader>b :GitBlame<CR>
+" git blame
+nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>

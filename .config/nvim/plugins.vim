@@ -29,6 +29,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
+Plug 'rhysd/git-messenger.vim'
 
 " other
 Plug 'yggdroot/indentline'
