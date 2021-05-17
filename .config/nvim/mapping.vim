@@ -20,12 +20,22 @@ nmap <Leader>q :q<CR>
 nnoremap <Leader>l :ls<CR>
 nnoremap <Leader>p :bp<CR>
 nnoremap <Leader>n :bn<CR>
-nnoremap <Leader>d :bd<CR>
+nnoremap <Leader>d :call DeleteBuffer()<CR>
 nnoremap <Leader>o :enew<CR>
 nnoremap <Leader>e :e 
 nnoremap <C-p> :bp<CR>
 nnoremap <C-n> :bn<CR>
 nnoremap <Leader>g :e#<CR>
+
+function! DeleteBuffer()
+	if len(getbufinfo({'buflisted':1}))==1
+		bdelete
+	else
+		bprevious
+		bdelete #
+	endif
+endfunction
+
 
 " tab key to select an item on coc.nvim menu
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
