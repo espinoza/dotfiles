@@ -8,15 +8,16 @@ set scrolloff=8     " number of lines from cursor to nearest limit
 set timeoutlen=300  " miliseconds to wait for mapping
 filetype plugin on  " filetype detection and specific plugins
 set hidden          " change between buffers without saving or losing history
+set expandtab
 
 " syntax options
 syntax enable
 
 " theme options
-set background=light
+set background=dark
 set termguicolors
-colorscheme PaperColor
-let g:airline_theme='papercolor'
+colorscheme dracula
+let g:airline_theme='dracula'
 set cursorline
 map <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 

@@ -10,10 +10,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " themes
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'cormacrelf/vim-colors-github'
-Plug 'ashfinal/vim-colors-violet'
 Plug 'kaicataldo/material.vim'
-"Plug 'kjssad/quantum.vim'
-"Plug 'rakr/vim-one'
+Plug 'dracula/vim'
 
 " file explorer
 Plug 'scrooloose/nerdtree'
