@@ -51,3 +51,7 @@ endfunction
 
 " git blame
 nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
+
+" tagbar
+nnoremap <Leader>y :TagbarToggle<CR>
+nnoremap <Leader>s :TagbarShowTag<CR>
