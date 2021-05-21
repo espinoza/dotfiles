@@ -18,6 +18,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 " this last one requires install font from
 " https://github.com/ryanoasis/nerd-fonts
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " status bar
 Plug 'vim-airline/vim-airline'

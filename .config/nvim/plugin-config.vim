@@ -6,7 +6,7 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
-let g:NERDTreeWinSize = 25
+let g:NERDTreeWinSize = 30
 
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
@@ -49,7 +49,7 @@ let g:airline_extensions = [
             \ 'clock'
         \ ]
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#clock#format = '%H:%M:%S'
+let g:airline#extensions#clock#format = '%H:%M'
 
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
@@ -71,6 +71,24 @@ let g:airline_symbols.dirty='⚡'
 " nerdtree-git
 let g:NERDTreeGitStatusUseNerdFonts = 1
 let g:NERDTreeGitStatusShowIgnored = 1
+let g:NERDTreeGitStatusConcealBrackets = 1
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+
+" nerdtree syntax highlight
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
 
 " Tagbar
 let g:tagbar_width = 40
