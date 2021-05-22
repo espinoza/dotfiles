@@ -7,6 +7,8 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 let g:NERDTreeWinSize = 30
+let g:NERDTreeDirArrowExpandable = "\u00a0"
+let g:NERDTreeDirArrowCollapsible = "\u00a0"
 
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
@@ -89,6 +91,9 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
+
+" devicons
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 
 " Tagbar
 let g:tagbar_width = 40

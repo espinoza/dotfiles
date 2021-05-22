@@ -23,7 +23,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'enricobacis/vim-airline-clock'
 
 " git
 Plug 'airblade/vim-gitgutter'
