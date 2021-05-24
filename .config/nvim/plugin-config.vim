@@ -1,25 +1,3 @@
-" NERDTree options
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
-let g:NERDTreeWinSize = 30
-let g:NERDTreeDirArrowExpandable = "\u00a0"
-let g:NERDTreeDirArrowCollapsible = "\u00a0"
-
-" Start NERDTree when Vim starts with a directory argument.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter *
-            \ if argc() == 1
-            \ && isdirectory(argv()[0])
-            \ && !exists('s:std_in') |
-                \ execute 'NERDTree' argv()[0]
-                \ | wincmd p | enew | execute 'cd '.argv()[0]
-            \ | endif
-
-" Open the existing NERDTree on each new tab.
-autocmd BufWinEnter * silent NERDTreeMirror
-
 " emmet options
 let g:user_emmet_leader_key=','         " redefine trigger key
 let g:user_emmet_install_global=0       " disable for all filetypes
@@ -65,32 +43,6 @@ let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.linenr = ''
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
-
-" nerdtree-git
-let g:NERDTreeGitStatusUseNerdFonts = 1
-let g:NERDTreeGitStatusShowIgnored = 1
-let g:NERDTreeGitStatusConcealBrackets = 1
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                \ 'Modified'  :'✹',
-                \ 'Staged'    :'✚',
-                \ 'Untracked' :'✭',
-                \ 'Renamed'   :'➜',
-                \ 'Unmerged'  :'═',
-                \ 'Deleted'   :'✖',
-                \ 'Dirty'     :'✗',
-                \ 'Ignored'   :'☒',
-                \ 'Clean'     :'✔︎',
-                \ 'Unknown'   :'?',
-                \ }
-
-" nerdtree syntax highlight
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-
-" devicons
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-let g:DevIconsEnableFoldersOpenClose = 1
 
 " Tagbar
 let g:tagbar_width = 30

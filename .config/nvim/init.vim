@@ -1,5 +1,6 @@
 so ~/.config/nvim/plugins.vim
 so ~/.config/nvim/plugin-config.vim
+so ~/.config/nvim/nerdtree-config.vim
 so ~/.config/nvim/mapping.vim
 
 set encoding=UTF-8

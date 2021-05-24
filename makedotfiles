@@ -29,6 +29,8 @@ ln -s $DOTFILES/.config/nvim/init.vim $HOME/.config/nvim/init.vim
 ln -s $DOTFILES/.config/nvim/plugins.vim $HOME/.config/nvim/plugins.vim
 [ -f $HOME/.config/nvim/plugin-config.vim ] && rm $HOME/.config/nvim/plugin-config.vim
 ln -s $DOTFILES/.config/nvim/plugin-config.vim $HOME/.config/nvim/plugin-config.vim
+[ -f $HOME/.config/nvim/nerdtree-config.vim ] && rm $HOME/.config/nvim/nerdtree-config.vim
+ln -s $DOTFILES/.config/nvim/nerdtree-config.vim $HOME/.config/nvim/nerdtree-config.vim
 [ -f $HOME/.config/nvim/mapping.vim ] && rm $HOME/.config/nvim/mapping.vim
 ln -s $DOTFILES/.config/nvim/mapping.vim $HOME/.config/nvim/mapping.vim
 
