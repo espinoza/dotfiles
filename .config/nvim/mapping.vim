@@ -18,16 +18,29 @@ nnoremap <C-l> <C-w>l
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 nnoremap <Leader>l :ls<CR>
-nnoremap <Leader>p :bp<CR>
-nnoremap <Leader>n :bn<CR>
+nnoremap <Leader>p :call ChangeBuffer("previous")<CR>
+nnoremap <Leader>n :call ChangeBuffer("next")<CR>
 nnoremap <Leader>d :call DeleteBuffer()<CR>
 nnoremap <Leader>o :enew<CR>
 nnoremap <Leader>e :e 
-nnoremap <C-p> :bp<CR>
-nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :call ChangeBuffer("previous")<CR>
+nnoremap <C-n> :call ChangeBuffer("next")<CR>
 nnoremap <Leader>g :e#<CR>
 
+function! ChangeBuffer(where)
+	" Avoid changing buffer inside NERDTree
+	if g:NERDTree.IsOpen() && bufname() == t:NERDTreeBufName
+		wincmd p
+  endif
+	if a:where == "previous"
+		bprevious
+	elseif a:where == "next"
+		bnext
+	endif
+endfunction
+
 function! DeleteBuffer()
+	" Avoid to close the window that is not NERDTree
 	if len(getbufinfo({'buflisted':1}))==1
 		bdelete
 	else
