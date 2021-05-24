@@ -28,25 +28,25 @@ nnoremap <C-n> :call ChangeBuffer("next")<CR>
 nnoremap <Leader>g :e#<CR>
 
 function! ChangeBuffer(where)
-	" Avoid changing buffer inside NERDTree
-	if g:NERDTree.IsOpen() && bufname() == t:NERDTreeBufName
-		wincmd p
+  " Avoid changing buffer inside NERDTree
+  if g:NERDTree.IsOpen() && bufname() == t:NERDTreeBufName
+    wincmd p
   endif
-	if a:where == "previous"
-		bprevious
-	elseif a:where == "next"
-		bnext
-	endif
+  if a:where == "previous"
+    bprevious
+  elseif a:where == "next"
+    bnext
+  endif
 endfunction
 
 function! DeleteBuffer()
-	" Avoid to close the window that is not NERDTree
-	if len(getbufinfo({'buflisted':1}))==1
-		bdelete
-	else
-		bprevious
-		bdelete #
-	endif
+  " Avoid to close the window that is not NERDTree
+  if len(getbufinfo({'buflisted':1}))==1
+    bdelete
+  else
+    bprevious
+    bdelete #
+  endif
 endfunction
 
 " show line to avoid too long lines
@@ -58,10 +58,10 @@ inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
 " NERDTree
 map <Leader>t :call NERDTreeToggleAndRefresh()<CR>
 function NERDTreeToggleAndRefresh()
-	:NERDTreeToggle
-	if g:NERDTree.IsOpen()
-		:NERDTreeRefreshRoot
-	endif
+  :NERDTreeToggle
+  if g:NERDTree.IsOpen()
+    :NERDTreeRefreshRoot
+  endif
 endfunction
 
 " git blame

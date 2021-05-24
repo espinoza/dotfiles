@@ -28,7 +28,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#clock#format = '%H:%M'
 
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 
 " powerline symbols
