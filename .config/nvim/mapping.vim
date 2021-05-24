@@ -36,6 +36,8 @@ function! DeleteBuffer()
 	endif
 endfunction
 
+" show line to avoid too long lines
+nnoremap <Leader>c :let &colorcolumn = ( &colorcolumn==0 ? 80 : 0 )<CR>
 
 " tab key to select an item on coc.nvim menu
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
@@ -54,4 +56,3 @@ nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
 
 " tagbar
 nnoremap <Leader>y :TagbarToggle<CR>
-nnoremap <Leader>s :TagbarShowTag<CR>

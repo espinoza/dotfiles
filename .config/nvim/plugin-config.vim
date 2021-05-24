@@ -1,6 +1,3 @@
-" indentline options
-let g:indentLine_char = '|'
-
 " NERDTree options
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
@@ -48,7 +45,6 @@ let g:airline_extensions = [
             \ 'hunks',
             \ 'virtualenv',
             \ 'tagbar',
-            \ 'clock'
         \ ]
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#clock#format = '%H:%M'
@@ -94,6 +90,8 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 
 " devicons
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+let g:DevIconsEnableFoldersOpenClose = 1
 
 " Tagbar
-let g:tagbar_width = 40
+let g:tagbar_width = 30
+let g:tagbar_sort = 0

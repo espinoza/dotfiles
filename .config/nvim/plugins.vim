@@ -32,14 +32,14 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " other
-Plug 'yggdroot/indentline'
 Plug 'mattn/emmet-vim'
 Plug 'AndrewRadev/tagalong.vim'
-Plug 'gregsexton/MatchTag'
+Plug 'Valloric/MatchTagAlways'
 Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'preservim/tagbar'
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 
