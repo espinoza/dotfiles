@@ -3,7 +3,7 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = getcwd()
-let g:NERDTreeWinSize = 30
+let g:NERDTreeWinSize = 25
 let g:NERDTreeDirArrows = 0
 
 " Start NERDTree when Vim starts with a directory argument.
@@ -33,7 +33,7 @@ function NERDTreeAutoFindBuffer()
 endfunction
 
 " Automatic refresh to avoid fix bad alignment when a folder is open
-autocmd CursorHold NERD_tree* :NERDTreeRefreshRoot
+autocmd CursorHold NERD_tree* :silent NERDTreeRefreshRoot
 
 " nerdtree-git
 let g:NERDTreeGitStatusUseNerdFonts = 1
@@ -58,5 +58,4 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 
 " devicons
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-let g:WebDevIconsNerdTreeBeforeGlyphPadding=""
 let g:DevIconsEnableFoldersOpenClose = 1

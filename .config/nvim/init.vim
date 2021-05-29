@@ -18,6 +18,9 @@ syntax enable
 set background=dark
 set termguicolors
 colorscheme dracula
+hi Normal guibg=NONE ctermbg=NONE
+hi VertSplit ctermfg=235 ctermbg=NONE cterm=NONE
+hi VertSplit guifg=gray guibg=NONE gui=NONE
 let g:airline_theme='dracula'
 set cursorline
 map <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>

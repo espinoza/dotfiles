@@ -3,6 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " syntax 
 Plug 'sheerun/vim-polyglot'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'tweekmonster/django-plus.vim'
 
 " completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -25,11 +26,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " git
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
 Plug 'rhysd/git-messenger.vim'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'mhinz/vim-signify'
 
 " other
 Plug 'mattn/emmet-vim'

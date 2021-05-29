@@ -44,8 +44,11 @@ function! DeleteBuffer()
   if len(getbufinfo({'buflisted':1}))==1
     bdelete
   else
+    let buffer_number = bufnr()
     bprevious
-    bdelete #
+    if bufloaded(buffer_number)
+      execute "bdelete" . buffer_number
+    endif
   endif
 endfunction
 
