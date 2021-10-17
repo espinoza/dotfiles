@@ -4,6 +4,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'tweekmonster/django-plus.vim'
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -26,7 +27,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " git
-" Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'zivyangll/git-blame.vim'
 Plug 'rhysd/git-messenger.vim'
@@ -41,7 +41,6 @@ Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'preservim/tagbar'
-Plug 'mhinz/vim-startify'
 
 call plug#end()
 
