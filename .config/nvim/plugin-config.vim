@@ -11,7 +11,9 @@ let g:coc_global_extensions = [
             \ 'coc-json',
             \ 'coc-tsserver',
             \ 'coc-eslint',
-            \ 'coc-jedi'
+            \ 'coc-jedi',
+            \ 'coc-htmldjango',
+            \ 'coc-sql'
         \ ]
 
 " air-line options

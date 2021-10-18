@@ -4,7 +4,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'tweekmonster/django-plus.vim'
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -36,7 +35,6 @@ Plug 'mhinz/vim-signify'
 " other
 Plug 'mattn/emmet-vim'
 Plug 'AndrewRadev/tagalong.vim'
-Plug 'Valloric/MatchTagAlways'
 Plug 'tpope/vim-commentary'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
