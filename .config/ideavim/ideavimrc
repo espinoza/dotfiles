@@ -49,7 +49,7 @@ sethandler <C-o> a:vim
 sethandler <C-r> a:vim
 " tag stack back; indent in insert (IDE update project: Alt-` then Update)
 sethandler <C-t> a:vim
-" half page up; delete to line start in insert (IDE super method: Navigate menu or the gutter arrow)
+" half page up; delete to line start in insert (IDE super method: gs)
 sethandler <C-u> a:vim
 " window commands; delete previous word in insert (IDE extend selection: :action EditorSelectWord)
 sethandler <C-w> a:vim
