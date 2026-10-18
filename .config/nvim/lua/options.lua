@@ -24,7 +24,22 @@ o.completeopt = { "menuone", "noselect", "popup", "fuzzy" }
 -- Zellij answers the terminal color query with the color from when it was
 -- attached, so Neovim can't detect the switch on its own
 local theme_file = vim.fn.expand("~/.config/alacritty/theme.toml")
-local is_light = vim.fn.filereadable(theme_file) == 1
-  and vim.fn.readfile(theme_file, "", 1)[1]:find("Latte") ~= nil
-o.background = is_light and "light" or "dark"
+local function theme_background()
+  local first = vim.fn.filereadable(theme_file) == 1 and vim.fn.readfile(theme_file, "", 1)[1]
+  return first and first:find("Latte") and "light" or "dark"
+end
+o.background = theme_background()
+
+-- switch live when bin/theme rewrites the file (the colorscheme is set in
+-- plugins.lua and picks the flavour from 'background')
+local watcher = vim.uv.new_fs_event()
+if watcher then
+  watcher:start(theme_file, {}, vim.schedule_wrap(function()
+    local background = theme_background()
+    if background ~= o.background then
+      o.background = background
+      vim.cmd.colorscheme("catppuccin")
+    end
+  end))
+end
 o.termguicolors = true
