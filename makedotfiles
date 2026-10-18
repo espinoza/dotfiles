@@ -24,7 +24,4 @@ echo "Installing Neovim config..."
 mkdir -p "$HOME/.config"
 link "$HOME/.config/nvim" "$DOTFILES/.config/nvim"
 
-echo "Installing bash aliases..."
-link "$HOME/.bash_aliases" "$DOTFILES/.bash_aliases"
-
 echo "Ready."
