@@ -3,39 +3,28 @@
 # Based on https://gitlab.com/gabmus/mydotfiles/-/blob/master/util/makelinks
 
 
-# Install Plug for Neovim
+# Install dotfiles from wherever this repo is cloned
 
-if [ -d "$HOME/.local/share/nvim/site/autoload/" ]; then
-	mkdir -p $HOME/.local/share/nvim/site/autoload/
-fi
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if [ -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]; then 
-	echo "Plug for Neovim already installed, skipping."
-else
-	echo "Installing Plug for Neovim..."
-	curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
+# Replace a symlink with a link to the repo; back up real files and folders
+link() {
+	local target="$1" source="$2"
+	if [ -L "$target" ]; then
+		rm "$target"
+	elif [ -e "$target" ]; then
+		mv "$target" "$target.bak-$(date +%Y%m%d%H%M%S)"
+		echo "  backed up existing $target"
+	fi
+	ln -s "$source" "$target"
+}
 
-
-# Install dotfiles
-
-DOTFILES="$HOME/git/dotfiles"
-
-echo "Installing Neovim config files..."
-[ ! -d $HOME/.config/nvim/ ] && mkdir -p $HOME/.config/nvim/
-[ -f $HOME/.config/nvim/init.vim ] && rm $HOME/.config/nvim/init.vim
-ln -s $DOTFILES/.config/nvim/init.vim $HOME/.config/nvim/init.vim
-[ -f $HOME/.config/nvim/plugins.vim ] && rm $HOME/.config/nvim/plugins.vim
-ln -s $DOTFILES/.config/nvim/plugins.vim $HOME/.config/nvim/plugins.vim
-[ -f $HOME/.config/nvim/plugin-config.vim ] && rm $HOME/.config/nvim/plugin-config.vim
-ln -s $DOTFILES/.config/nvim/plugin-config.vim $HOME/.config/nvim/plugin-config.vim
-[ -f $HOME/.config/nvim/nerdtree-config.vim ] && rm $HOME/.config/nvim/nerdtree-config.vim
-ln -s $DOTFILES/.config/nvim/nerdtree-config.vim $HOME/.config/nvim/nerdtree-config.vim
-[ -f $HOME/.config/nvim/mapping.vim ] && rm $HOME/.config/nvim/mapping.vim
-ln -s $DOTFILES/.config/nvim/mapping.vim $HOME/.config/nvim/mapping.vim
+# Neovim 0.12+ (plugins install themselves on first start with vim.pack)
+echo "Installing Neovim config..."
+mkdir -p "$HOME/.config"
+link "$HOME/.config/nvim" "$DOTFILES/.config/nvim"
 
 echo "Installing bash aliases..."
-[ -f $HOME/.bash_aliases ] && rm $HOME/.bash_aliases
-ln -s $DOTFILES/.bash_aliases $HOME/.bash_aliases
+link "$HOME/.bash_aliases" "$DOTFILES/.bash_aliases"
 
 echo "Ready."
