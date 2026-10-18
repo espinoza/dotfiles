@@ -1,0 +1,11 @@
+[Unit]
+Description=Switch Alacritty, Zellij and Neovim themes with GNOME's dark/light style
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+ExecStart=%h/.local/bin/theme-follow-gnome
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

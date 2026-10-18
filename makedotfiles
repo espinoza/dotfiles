@@ -39,5 +39,16 @@ link "$HOME/.config/ideavim" "$DOTFILES/.config/ideavim"
 echo "Installing scripts..."
 mkdir -p "$HOME/.local/bin"
 link "$HOME/.local/bin/theme" "$DOTFILES/bin/theme"
+link "$HOME/.local/bin/theme-follow-gnome" "$DOTFILES/bin/theme-follow-gnome"
+
+# GNOME only: switch themes when GNOME switches between dark and light
+if command -v gsettings >/dev/null && systemctl --user show-environment >/dev/null 2>&1; then
+	echo "Installing GNOME theme follower..."
+	mkdir -p "$HOME/.config/systemd/user"
+	link "$HOME/.config/systemd/user/theme-follow-gnome.service" \
+		"$DOTFILES/.config/systemd/user/theme-follow-gnome.service"
+	systemctl --user daemon-reload
+	systemctl --user enable --now theme-follow-gnome.service
+fi
 
 echo "Ready."
