@@ -1,0 +1,80 @@
+" IdeaVim for JetBrains IDEs (keymap: IntelliJ GNOME).
+" Vim handles text editing; IDE actions use the IDE's own shortcuts
+" (Alt-Enter, Shift-F6, Alt-F7, Ctrl-B, Ctrl-Q, Shift Shift...).
+
+" search and scrolling
+set scrolloff=8
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" J joins lines the way the IDE does (strings, comments)
+set ideajoin
+" no beep
+set visualbell
+
+" Shortcut conflicts: who handles each Ctrl key (n-v = normal and visual,
+" i = insert, a = all modes). Vim keeps editing and navigation; the IDE gets
+" its actions where the Vim meaning is rarely used.
+" ":action <ID>" runs any IDE action by name; :actionlist shows the IDs.
+
+" Vim: core editing and navigation
+" half page down (IDE: duplicate line; Vim: yyp)
+sethandler <C-d> a:vim
+" jump forward (IDE: implement methods; Vim: :action ImplementMethods)
+sethandler <C-i> a:vim
+" jump back (IDE: override methods; Vim: :action OverrideMethods)
+sethandler <C-o> a:vim
+" redo (IDE: replace; Vim: :%s/old/new/gc)
+sethandler <C-r> a:vim
+" half page up (IDE: go to super method; Vim: :action GotoSuperMethod)
+sethandler <C-u> a:vim
+" window commands, delete word in insert (IDE: extend selection; Vim: v plus a text object, like viw, vi( or vip)
+sethandler <C-w> a:vim
+" scroll up (IDE: delete line; Vim: dd)
+sethandler <C-y> a:vim
+" escape (IDE: go to code block start; Vim: [{)
+sethandler <C-[> a:vim
+
+" Vim in normal/visual, IDE while typing
+" increment number / select all (in normal mode, Vim: ggVG)
+sethandler <C-a> n-v:vim i:ide
+" visual block / paste (in normal mode, Vim: "+p from the system clipboard)
+sethandler <C-v> n-v:vim i:ide
+" decrement number / cut (in normal or visual mode, Vim: "+d to the system clipboard)
+sethandler <C-x> n-v:vim i:ide
+
+" IDE: its action is more useful than Vim's here
+" go to declaration (Vim: page up)
+sethandler <C-b> a:ide
+" copy (Vim: cancel; use y and Esc instead)
+sethandler <C-c> a:ide
+" recent files (Vim: scroll one line)
+sethandler <C-e> a:ide
+" find in file (Vim: page down; / is enough)
+sethandler <C-f> a:ide
+" go to line (Vim: file info)
+sethandler <C-g> a:ide
+" type hierarchy (Vim: backspace in insert)
+sethandler <C-h> a:ide
+" insert live template (Vim: new line)
+sethandler <C-j> a:ide
+" commit (Vim: digraph in insert)
+sethandler <C-k> a:ide
+" (Vim: redraw, useless in the IDE)
+sethandler <C-l> a:ide
+" go to class (Vim: next line / completion in insert)
+sethandler <C-n> a:ide
+" parameter info, also while typing (Vim: previous line / completion in insert)
+sethandler <C-p> a:ide
+" quick documentation (Vim: alternative visual block)
+sethandler <C-q> a:ide
+" save all (Vim: nothing)
+sethandler <C-s> a:ide
+" update project (Vim: tag stack back)
+sethandler <C-t> a:ide
+" undo (Vim: suspend, meaningless in the IDE)
+sethandler <C-z> a:ide
+" go to code block end (Vim: go to definition; Ctrl-B does that)
+sethandler <C-]> a:ide

@@ -30,4 +30,7 @@ link "$HOME/.config/zellij" "$DOTFILES/.config/zellij"
 echo "Installing Alacritty config..."
 link "$HOME/.config/alacritty" "$DOTFILES/.config/alacritty"
 
+echo "Installing IdeaVim config (JetBrains IDEs)..."
+link "$HOME/.config/ideavim" "$DOTFILES/.config/ideavim"
+
 echo "Ready."
