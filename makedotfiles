@@ -24,4 +24,10 @@ echo "Installing Neovim config..."
 mkdir -p "$HOME/.config"
 link "$HOME/.config/nvim" "$DOTFILES/.config/nvim"
 
+echo "Installing Zellij config..."
+link "$HOME/.config/zellij" "$DOTFILES/.config/zellij"
+
+echo "Installing Alacritty config..."
+link "$HOME/.config/alacritty" "$DOTFILES/.config/alacritty"
+
 echo "Ready."

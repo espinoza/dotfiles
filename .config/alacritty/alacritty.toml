@@ -1,0 +1,30 @@
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
+
+[[keyboard.bindings]]
+key = "F11"
+action = "ToggleFullscreen"
+
+[terminal.shell]
+program = "zellij"
+args = ["attach", "--create", "main"]
+
+[window]
+decorations = "None"
+
+[font]
+size = 12
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Medium"
+
+[font.bold]
+family = "JetBrains Mono"
+style = "ExtraBold"
+
+[general]
+import = ["~/.config/alacritty/catppuccin_macchiato.toml"]
