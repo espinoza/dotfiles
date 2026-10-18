@@ -4,7 +4,7 @@
 background = '#24273A' # base
 foreground = '#CAD3F5' # text
 # Bright and dim foreground colors
-dim_foreground = '#CAD3F5' # text
+dim_foreground = '#8087A2' # overlay1 (was text, which made dim text look normal)
 bright_foreground = '#CAD3F5' # text
 
 # Cursor colors
