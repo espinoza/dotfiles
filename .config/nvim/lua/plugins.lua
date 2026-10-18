@@ -39,7 +39,10 @@ vim.pack.add({
 }, { confirm = false })
 
 -- theme
-require("catppuccin").setup({ flavour = "macchiato" })
+require("catppuccin").setup({
+  flavour = "auto",
+  background = { light = "latte", dark = "macchiato" },
+})
 vim.cmd.colorscheme("catppuccin")
 
 require("lualine").setup({
