@@ -29,8 +29,15 @@ link "$HOME/.config/zellij" "$DOTFILES/.config/zellij"
 
 echo "Installing Alacritty config..."
 link "$HOME/.config/alacritty" "$DOTFILES/.config/alacritty"
+# Start dark; bin/theme switches it later
+[ -f "$DOTFILES/.config/alacritty/theme.toml" ] || \
+	cp "$DOTFILES/.config/alacritty/catppuccin_macchiato.toml" "$DOTFILES/.config/alacritty/theme.toml"
 
 echo "Installing IdeaVim config (JetBrains IDEs)..."
 link "$HOME/.config/ideavim" "$DOTFILES/.config/ideavim"
+
+echo "Installing scripts..."
+mkdir -p "$HOME/.local/bin"
+link "$HOME/.local/bin/theme" "$DOTFILES/bin/theme"
 
 echo "Ready."

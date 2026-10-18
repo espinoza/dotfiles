@@ -27,4 +27,5 @@ family = "JetBrains Mono"
 style = "ExtraBold"
 
 [general]
-import = ["~/.config/alacritty/catppuccin_macchiato.toml"]
+# theme.toml is a copy of the Macchiato or Latte file, written by bin/theme
+import = ["~/.config/alacritty/theme.toml"]

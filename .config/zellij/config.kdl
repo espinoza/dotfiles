@@ -282,18 +282,16 @@ web_client {
  
 // Choose the theme that is specified in the themes section.
 // Default: default
+// bin/theme switches this between catppuccin-macchiato-lavender and
+// catppuccin-latte; Zellij applies it live
 // 
 theme "catppuccin-macchiato-lavender"
  
-// Theme to use when the host terminal reports a dark color palette.
-// Requires `theme_light` to also be set; otherwise `theme` is used.
+// theme_dark and theme_light are not used: Zellij does not switch between
+// them when Alacritty changes colors, so they never follow bin/theme
 // 
-theme_dark "catppuccin-macchiato-lavender"
- 
-// Theme to use when the host terminal reports a light color palette.
-// Requires `theme_dark` to also be set; otherwise `theme` is used.
-// 
-theme_light "catppuccin-latte"
+// theme_dark "catppuccin-macchiato-lavender"
+// theme_light "catppuccin-latte"
  
 // Choose the base input mode of zellij.
 // Default: normal

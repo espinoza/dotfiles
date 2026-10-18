@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Switch Alacritty and Zellij between Catppuccin Macchiato (dark) and
+# Latte (light). Both reload their config on change.
+# Usage: theme [dark|light]   (no argument toggles)
+
+DIR="$HOME/.config/alacritty"
+ZELLIJ_CONFIG="$HOME/.config/zellij/config.kdl"
+DARK="$DIR/catppuccin_macchiato.toml"
+LIGHT="$DIR/catppuccin_latte.toml"
+CURRENT="$DIR/theme.toml"
+
+case "${1:-}" in
+	dark) NEW="$DARK"; ZELLIJ_THEME="catppuccin-macchiato-lavender" ;;
+	light) NEW="$LIGHT"; ZELLIJ_THEME="catppuccin-latte" ;;
+	"") if cmp -s "$CURRENT" "$DARK"; then exec "$0" light; else exec "$0" dark; fi ;;
+	*) echo "Usage: theme [dark|light]"; exit 1 ;;
+esac
+
+cp "$NEW" "$CURRENT"
+# Alacritty always watches its main file, so touching it makes the reload
+# work even in windows opened before theme.toml existed
+touch "$DIR/alacritty.toml"
+sed -i "s/^theme \".*\"$/theme \"$ZELLIJ_THEME\"/" "$ZELLIJ_CONFIG"
+echo "Theme: $(basename "$NEW" .toml)"
