@@ -20,7 +20,7 @@ size = 12
 
 [font.normal]
 family = "JetBrains Mono"
-style = "Medium"
+style = "Regular"
 
 [font.bold]
 family = "JetBrains Mono"
