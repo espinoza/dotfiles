@@ -1,0 +1,118 @@
+#!/bin/bash
+
+# Install what the dotfiles need on Debian 13 (x86_64), then run makedotfiles.
+# apt for what Debian packages well; pinned downloads, checked against their
+# published SHA-256, for what Debian ships too old or not at all.
+# Everything downloaded goes to ~/.local, so only apt needs sudo.
+
+set -euo pipefail
+
+NVIM_VERSION="0.12.6"
+NVIM_SHA256="474430d53e6264f6d6dd18db42d6dc9df3a1b56ca9e88a325bbf860e1a811d87"
+TREE_SITTER_VERSION="0.27.1"
+TREE_SITTER_SHA256="d01042f94ba3d6827ddc9788e235f75d8366431be42bdf90ade534d960c98b7d"
+ZELLIJ_VERSION="0.44.2"
+ZELLIJ_SHA256="26e1753b4c8451912523c7d8700c5aed75392ea57f0b1c988560f3bbc7775744"
+NERD_FONTS_VERSION="3.5.1"
+NERD_FONTS_SHA256="01172f37db8543edb102e5cb5c64101c9f4686630804d49b419aa07b23a69996"
+
+BIN="$HOME/.local/bin"
+OPT="$HOME/.local/opt"
+FONTS="$HOME/.local/share/fonts"
+
+if [ "$(uname -m)" != "x86_64" ]; then
+	echo "Only x86_64 is supported."
+	exit 1
+fi
+
+TMP="$(mktemp -d)"
+trap 'rm -rf "$TMP"' EXIT
+mkdir -p "$BIN" "$OPT" "$FONTS"
+
+# Download $1 to $TMP/$2 and stop if its SHA-256 isn't $3
+download() {
+	local url="$1" file="$2" sha="$3"
+	curl -fsSL "$url" -o "$TMP/$file"
+	echo "$sha  $TMP/$file" | sha256sum -c --quiet
+}
+
+
+# Debian packages: font, terminal, search, and a C compiler for tree-sitter parsers
+
+echo "Installing Debian packages..."
+sudo apt-get update -qq
+sudo apt-get install -y -qq fonts-jetbrains-mono alacritty ripgrep build-essential \
+	git curl xz-utils fontconfig
+
+
+# Neovim (Debian's is 0.10; the config needs 0.12 for vim.pack)
+
+if [ -x "$OPT/nvim-$NVIM_VERSION/bin/nvim" ]; then
+	echo "Neovim $NVIM_VERSION already installed, skipping."
+else
+	echo "Installing Neovim $NVIM_VERSION..."
+	download "https://github.com/neovim/neovim/releases/download/v$NVIM_VERSION/nvim-linux-x86_64.tar.gz" \
+		nvim.tar.gz "$NVIM_SHA256"
+	tar -xzf "$TMP/nvim.tar.gz" -C "$TMP"
+	mv "$TMP/nvim-linux-x86_64" "$OPT/nvim-$NVIM_VERSION"
+fi
+ln -sfn "$OPT/nvim-$NVIM_VERSION/bin/nvim" "$BIN/nvim"
+
+
+# tree-sitter CLI (Debian's is 0.22; nvim-treesitter needs 0.26.1+ to build parsers)
+
+if "$BIN/tree-sitter" --version 2>/dev/null | grep -q "$TREE_SITTER_VERSION"; then
+	echo "tree-sitter $TREE_SITTER_VERSION already installed, skipping."
+else
+	echo "Installing tree-sitter $TREE_SITTER_VERSION..."
+	download "https://github.com/tree-sitter/tree-sitter/releases/download/v$TREE_SITTER_VERSION/tree-sitter-linux-x64.gz" \
+		tree-sitter.gz "$TREE_SITTER_SHA256"
+	gunzip -c "$TMP/tree-sitter.gz" > "$TMP/tree-sitter"
+	install -m755 "$TMP/tree-sitter" "$BIN/tree-sitter"
+fi
+
+
+# Zellij (not packaged in Debian 13)
+
+if "$BIN/zellij" --version 2>/dev/null | grep -q "$ZELLIJ_VERSION"; then
+	echo "Zellij $ZELLIJ_VERSION already installed, skipping."
+else
+	echo "Installing Zellij $ZELLIJ_VERSION..."
+	download "https://github.com/zellij-org/zellij/releases/download/v$ZELLIJ_VERSION/zellij-x86_64-unknown-linux-musl.tar.gz" \
+		zellij.tar.gz "$ZELLIJ_SHA256"
+	tar -xzf "$TMP/zellij.tar.gz" -C "$TMP"
+	install -m755 "$TMP/zellij" "$BIN/zellij"
+fi
+
+
+# Nerd Font symbols only: icons for nvim-tree, telescope and lualine, while
+# Alacritty keeps JetBrains Mono for text (fontconfig falls back for icons)
+
+if [ -f "$FONTS/NerdFontsSymbolsOnly/SymbolsNerdFontMono-Regular.ttf" ]; then
+	echo "Nerd Font symbols already installed, skipping."
+else
+	echo "Installing Nerd Font symbols $NERD_FONTS_VERSION..."
+	download "https://github.com/ryanoasis/nerd-fonts/releases/download/v$NERD_FONTS_VERSION/NerdFontsSymbolsOnly.tar.xz" \
+		nerd-fonts.tar.xz "$NERD_FONTS_SHA256"
+	mkdir -p "$TMP/nerd-fonts" "$FONTS/NerdFontsSymbolsOnly"
+	tar -xJf "$TMP/nerd-fonts.tar.xz" -C "$TMP/nerd-fonts"
+	cp "$TMP"/nerd-fonts/*.ttf "$FONTS/NerdFontsSymbolsOnly/"
+	fc-cache -f "$FONTS" >/dev/null
+fi
+
+
+# JetBrains IDEs and file watching: raise the inotify limit for large projects
+
+if [ ! -f /etc/sysctl.d/60-jetbrains.conf ]; then
+	echo "Raising the inotify watch limit..."
+	echo "fs.inotify.max_user_watches=524288" | sudo tee /etc/sysctl.d/60-jetbrains.conf >/dev/null
+	sudo sysctl --system >/dev/null
+fi
+
+
+case ":$PATH:" in
+	*":$BIN:"*) ;;
+	*) echo "Note: $BIN is not in PATH yet; log out and back in (Debian's ~/.profile adds it)." ;;
+esac
+
+echo "Dependencies ready. Now run ./makedotfiles"
